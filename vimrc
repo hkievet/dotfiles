@@ -3,15 +3,15 @@ set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
 " START PLUGINS
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'mattn/emmet-vim'  " HTML helper
-"Plugin 'scrooloose/syntastic' "Syntax checker
-Plugin 'altercation/vim-colors-solarized' "Styling
-Plugin 'Lokaltog/vim-powerline' "POWERLINE
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fatih/vim-go'
-call vundle#end()
+call plug#begin()
+Plug 'mattn/emmet-vim'  " HTML helper
+Plug 'altercation/vim-colors-solarized' "Styling
+Plug 'Lokaltog/vim-powerline' "POWERLINE
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/nerdtree'
+Plug 'fatih/vim-go'
+Plug 'digitaltoad/vim-pug'
+call plug#end()
 " END PLUGINS
 
 filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
@@ -58,3 +58,5 @@ nnoremap <silent> ]B :blast<CR>
 
 vmap <silent> ;h :s?^\(\s*\)+ '\([^']\+\)',*\s*$?\1\2?g<CR>
 vmap <silent> ;q :s?^\(\s*\)\(.*\)\s*$? \1 + '\2'?<CR>
+
+map <C-m> :NERDTreeToggle<CR>
