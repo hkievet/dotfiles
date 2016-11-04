@@ -3,6 +3,11 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'digitaltoad/vim-pug'
+Plug 'leafgarland/typescript-vim'
+Plug 'quramy/tsuquyomi'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'freeo/vim-kalisi'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 autocmd StdinReadPre * let s:std_in=1
@@ -13,6 +18,8 @@ set softtabstop=2
 
 let mapleader="\<SPACE>"
 
+colorscheme kalisi
+set background=dark
 
 set showmode            " Show current mode.
 set ruler               " Show the line and column numbers of the cursor.
@@ -54,7 +61,6 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
 
-nnoremap ; :
 nnoremap Q @q
 map <C-y> :FZF<CR>
 
@@ -63,19 +69,19 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-au BufNewFile,BufRead *.js, *.html, *.css ;
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
+"au BufNewFile,BufRead *.py
+    "\ set tabstop=4 |
+    "\ set softtabstop=4 |
+    "\ set shiftwidth=4 |
+    "\ set textwidth=79 |
+    "\ set expandtab |
+    "\ set autoindent |
+    "\ set fileformat=unix |
+"
+"au BufNewFile,BufRead *.js, *.html, *.css
+    "\ set tabstop=2 |
+    "\ set softtabstop=2 |
+    "\ set shiftwidth=2 |
 
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
