@@ -3,20 +3,40 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'digitaltoad/vim-pug'
-Plug 'leafgarland/typescript-vim'
-Plug 'quramy/tsuquyomi'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'quramy/tsuquyomi'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'freeo/vim-kalisi'
 Plug 'mattn/emmet-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'pocari/deoplete-typescript'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-go'
+
+Plug 'neomake/neomake'
+
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'fatih/vim-go'
+
+" Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
+
+" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
+
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+let mapleader = ","
 
 autocmd StdinReadPre * let s:std_in=1
 
 map <C-m> :NERDTreeToggle<CR>
 
 set softtabstop=2
-
-let mapleader="\<SPACE>"
 
 colorscheme kalisi
 set background=dark
@@ -32,7 +52,7 @@ set shiftwidth=2        " Indentation amount for < and > commands.
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
-set esckeys             " Cursor keys in insert mode.
+" set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 
@@ -65,7 +85,7 @@ nnoremap Q @q
 map <C-y> :FZF<CR>
 
 nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR> 
+nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
@@ -89,5 +109,56 @@ set encoding=utf-8
 let python_highlight_all=1
 syntax on
 
-let g:flake8_cmd="/usr/bin/python3-flake8"   
+let g:flake8_cmd="/usr/bin/python3-flake8"
+
+
+
+"Syntastic START
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_typescript_checkers = ['tslint']
+"let g:syntastic_disabled_filetypes=['html']
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"END Syntastic
+
+" Run neomake on save
+autocmd! BufWritePost * Neomake
+autocmd CompleteDone * pclose!
+
+"START Airline https://github.com/vim-airline/vim-airline
+let g:airline#extensions#tabline#enabled = 1
+
+let g:python_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim3/bin/python'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" JAVACOMPLETE2 stuff for deoplete https://github.com/artur-shaik/vim-javacomplete2
+"
+" TODO: somehow make this work with java7 or find an alternative....
+"
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+" To enable smart (trying to guess import option) inserting class imports with F4, add:
+" nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+" imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+
+" To enable usual (will ask for import option) inserting class imports with F5, add:
+" nmap <F5> <Plug>(JavaComplete-Imports-Add)
+" imap <F5> <Plug>(JavaComplete-Imports-Add)
+
+" To add all missing imports with F6:
+" nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+" imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+
+" To remove all unused imports with F7:
+" nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+" imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set hidden
+set mouse=a
 
