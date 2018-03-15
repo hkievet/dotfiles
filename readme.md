@@ -27,5 +27,13 @@ Use the bookmark capabilities on
 
 * Use [Markdown Viewer](https://github.com/simov/markdown-viewer), and adjust the settings to allow local files to open files like this in the browser.
 
+# Setting up a github repo for local repo via cli
+
+```
+curl -u 'hkievet' https://api.github.com/user/repos -d '{"private": false, "name": "<<<NAME OF REPO>>>"}'
+git remote add origin https://github.com/hkievet/<<<NAME OF REPO>>>.git
+git push -u origin master
+```
+
 
 
