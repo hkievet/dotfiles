@@ -6,7 +6,6 @@ if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
   source ~/dotfiles/config/zshrc.conf
 fi
 
-
 source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
@@ -43,27 +42,6 @@ alias npminstall="rm -rf node_modules && npm install"
 
 alias python="python3"
 alias pip="pip3"
-
-# Set Java Version to 1.7 for Campus
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home"
-export PATH="$PATH:$JAVA_HOME"
-
-# Use rvm
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-source /Users/hunter.kievet/.rvm/scripts/rvm
-type rvm | head -n 1
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/gems/ruby-2.3-1/bin" # Add RVM to PATH for scripting
-rvm use 2.3.1
-
-export PATH="/Users/hunter.kievet/.pyenv/bin:$PATH"
-export PATH="/Users/hunter.kievet/Library/Python/3.5/bin/:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-eval "$(thefuck --alias)"
 
 # for marmoset autocomplete
 autoload bashcompinit
