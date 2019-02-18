@@ -133,8 +133,8 @@ autocmd CompleteDone * pclose!
 "START Airline https://github.com/vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1
 
-let g:python_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim3/bin/python'
+" let g:python_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim2/bin/python'
+" let g:python3_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim3/bin/python'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JAVACOMPLETE2 stuff for deoplete https://github.com/artur-shaik/vim-javacomplete2
@@ -162,3 +162,6 @@ let g:python3_host_prog = '/Users/hunter.kievet/.pyenv/versions/neovim3/bin/pyth
 set hidden
 set mouse=a
 
+
+" for ctags python
+nnoremap <C-k> :!ctags -aR /usr/local/lib/python3.7/site-packages

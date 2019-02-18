@@ -1,17 +1,22 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-source $(brew --prefix nvm)/nvm.sh
+if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
+  echo "No configuration file setup for zshrc.  Please copy and edit ~/dotfiles/config/zshrc.example.conf"
+  else
+  source ~/dotfiles/config/zshrc.conf
+fi
 
+
+source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
-
 nvm use stable
 
 # my username:
-export DEFAULT_USER=hunter.kievet
+export DEFAULT_USER=hunterkievet
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/hunter.kievet/.oh-my-zsh
+export ZSH=/Users/hunterkievet/.oh-my-zsh
 
 
 # pip will only run if there is a virtual environment activated
@@ -34,14 +39,10 @@ alias vim="nvim"
 alias pytest="python -m unittest"
 alias mux="tmuxinator"
 alias tmux="tmux -2" # 256 bit colors babe
-alias fiddler="mono /Users/hunter.kievet/bin/fiddler/Fiddler.exe"
-alias localhostMD="open http://localhost:3000/campus"
-alias localhostCE="open http://localhost:3001/campus"
-alias cdsched="cd ~/dev/campus-schedule/"
-alias cdscrew="cd ~/dev/campus-screwdriver/"
-alias gradleinstall="git pull && ./gradlew cleanAll && ./gradlew idea && ./gradlew assembleAll"
-alias nrd="npm run dev"
 alias npminstall="rm -rf node_modules && npm install"
+
+alias python="python3"
+alias pip="pip3"
 
 # Set Java Version to 1.7 for Campus
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home"
@@ -64,5 +65,19 @@ eval "$(pyenv virtualenv-init -)"
 
 eval "$(thefuck --alias)"
 
-clear
+# for marmoset autocomplete
+autoload bashcompinit
+bashcompinit
+export MARMOSET_LOCATION="/Users/hunterkievet/work/marmoset"
+if [ -f "$MARMOSET_LOCATION/dcrun_completion.sh" ]; then
+  source "$MARMOSET_LOCATION/dcrun_completion.sh"
+fi
+
+# virtualenv python  `pip install --user virtualenv`
+export PATH="/Users/hunterkievet/Library/Python/3.7/bin:$PATH"
+
+source ~/dotfiles/aliases/.alias_oneome
+
+# clear
 echo "Though walls of granite intervine"
+

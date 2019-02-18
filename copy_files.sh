@@ -1,16 +1,11 @@
 #!/bin/bash
 
-for f in *
+files_to_symlink=(tmux.conf vimrc zshrc gitignore_global bashrc bash_profile)
+
+for f in ${files_to_symlink[@]}
 do
-  if [[ "$f" == "init.vim" ]]
-  then
-    echo "Processing $f in a special way"
-    ln -f $f ../.config/nvim/$f
-  elif [[ $f == *.md ]]
-  then
-    echo "Skipping $f"
-  else
-    echo "Processing $f"
-    ln -f $f ../.$f
-  fi
+  echo "Processing $f"
+  ln -f $f ../.$f
 done
+
+ln -f init.vim ../.config/nvim/$f
