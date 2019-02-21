@@ -12,7 +12,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm use stable
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/hunterkievet/.oh-my-zsh
+export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
 
 # pip will only run if there is a virtual environment activated
 # export PIP_REQUIRE_VIRTUALENV=true
@@ -43,7 +43,7 @@ alias sourcevenv="source env/bin/activate"
 # for marmoset autocomplete
 autoload bashcompinit
 bashcompinit
-export MARMOSET_LOCATION="/Users/hunterkievet/work/marmoset"
+export MARMOSET_LOCATION="/Users/$DEFAULT_USER/work/marmoset"
 if [ -f "$MARMOSET_LOCATION/dcrun_completion.sh" ]; then
   source "$MARMOSET_LOCATION/dcrun_completion.sh"
 fi
