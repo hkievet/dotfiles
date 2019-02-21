@@ -4,4 +4,5 @@ alias cdmarm="cd ~/work/marmoset/"
 alias blogstop="pushd /Users/hunterkievet/work/oneomeblog && ghost stop && popd"
 alias blogstart="pushd /Users/hunterkievet/work/oneomeblog && ghost start && popd"
 alias marmsass="sass --watch src/oneome.exp/oneome/exp/static/consumer/css/scss/style.scss:src/oneome.exp/oneome/exp/static/consumer/css/style.min.css --style compressed"
+alias oosass="sass --watch grav/user/themes/oneome/css/shared.scss:grav/user/themes/oneome/css/shared.css --style compressed" 
 

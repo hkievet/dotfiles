@@ -1,5 +1,6 @@
 call plug#begin()
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'digitaltoad/vim-pug'
@@ -9,20 +10,36 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'freeo/vim-kalisi'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 "Plug 'pocari/deoplete-typescript'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
 Plug 'zchee/deoplete-go'
 
 Plug 'neomake/neomake'
+Plug 'sbdchd/neoformat'
+
 
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'fatih/vim-go'
 
+" automatic quote and bracket completion
+Plug 'tpope/vim-surround'
+
 " Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 
+let mapleader = ","
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DEOPLETE
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 
@@ -30,7 +47,28 @@ let g:deoplete#enable_at_startup = 1
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 
-let mapleader = ","
+" Autoclose preview windo
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NEOFORMAT
+" for python `pip install yapf`
+"
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NEOMAKE
+" Run neomake on save
+autocmd! BufWritePost * Neomake
+autocmd CompleteDone * pclose!
+
+let g:neomake_python_enabled_makers = ['flake8']
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 autocmd StdinReadPre * let s:std_in=1
 
@@ -109,7 +147,6 @@ set encoding=utf-8
 let python_highlight_all=1
 syntax on
 
-let g:flake8_cmd="/usr/bin/python3-flake8"
 
 
 
@@ -126,9 +163,6 @@ let g:flake8_cmd="/usr/bin/python3-flake8"
 "let g:syntastic_check_on_wq = 0
 "END Syntastic
 
-" Run neomake on save
-autocmd! BufWritePost * Neomake
-autocmd CompleteDone * pclose!
 
 "START Airline https://github.com/vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1

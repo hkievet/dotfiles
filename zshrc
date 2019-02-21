@@ -11,12 +11,8 @@ export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 nvm use stable
 
-# my username:
-export DEFAULT_USER=hunterkievet
-
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/hunterkievet/.oh-my-zsh
-
 
 # pip will only run if there is a virtual environment activated
 # export PIP_REQUIRE_VIRTUALENV=true
@@ -42,6 +38,7 @@ alias npminstall="rm -rf node_modules && npm install"
 
 alias python="python3"
 alias pip="pip3"
+alias sourcevenv="source env/bin/activate"
 
 # for marmoset autocomplete
 autoload bashcompinit
@@ -52,7 +49,8 @@ if [ -f "$MARMOSET_LOCATION/dcrun_completion.sh" ]; then
 fi
 
 # virtualenv python  `pip install --user virtualenv`
-export PATH="/Users/hunterkievet/Library/Python/3.7/bin:$PATH"
+export PATH="/Users/$DEFAULT_USER/Library/Python/3.7/bin:$PATH"
+export PATH="/Users/$DEFAULT_USER/bin:$PATH"
 
 source ~/dotfiles/aliases/.alias_oneome
 
