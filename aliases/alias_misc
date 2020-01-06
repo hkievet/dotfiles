@@ -1,0 +1,3 @@
+alias rzsh="source ~/.zshrc"
+alias cdeh="cd ~/heezy_www/eighthourdreams"
+alias cdss="cd /Users/achieve/dev/wordpress/wordpress/wp-content/themes/spera"

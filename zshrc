@@ -1,3 +1,4 @@
+# echo "loading zshrc"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
@@ -5,6 +6,10 @@ if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
   else
   source ~/dotfiles/config/zshrc.conf
 fi
+
+
+source <(antibody init)
+antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 
 source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="$HOME/.nvm"
@@ -24,9 +29,9 @@ export EDITOR=nvim
 
 ZSH_THEME="agnoster"
 
-plugins=(git npm)
+#plugins=(git npm django)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -51,9 +56,16 @@ fi
 # virtualenv python  `pip install --user virtualenv`
 export PATH="/Users/$DEFAULT_USER/Library/Python/3.7/bin:$PATH"
 export PATH="/Users/$DEFAULT_USER/bin:$PATH"
+export PATH=$PATH:/usr/local/mysql/bin
+
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH" 
 
 source ~/dotfiles/aliases/.alias_oneome
+source ~/dotfiles/aliases/alias_git
+source ~/dotfiles/aliases/alias_misc
 
 # clear
 echo "Though walls of granite intervine"
+
+alias ctags="`brew --prefix`/bin/ctags"
 

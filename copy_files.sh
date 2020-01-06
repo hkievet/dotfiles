@@ -9,3 +9,4 @@ do
 done
 
 ln -f init.vim ../.config/nvim/$f
+echo "init.vim $f"

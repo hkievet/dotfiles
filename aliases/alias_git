@@ -1,0 +1,3 @@
+alias gs="git status"
+alias gcam="git commit -a -m"
+alias rzsh="source ~/.zshrc"
