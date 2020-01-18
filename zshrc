@@ -7,9 +7,15 @@ if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
   source ~/dotfiles/config/zshrc.conf
 fi
 
+export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
+ZSH_THEME="agnoster"
+plugins=(git npm django)
+source $ZSH/oh-my-zsh.sh
 
-source <(antibody init)
-antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+
+
+# source <(antibody init)
+# antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 
 source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="$HOME/.nvm"
@@ -17,7 +23,6 @@ export NVM_DIR="$HOME/.nvm"
 nvm use stable
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
 
 # pip will only run if there is a virtual environment activated
 # export PIP_REQUIRE_VIRTUALENV=true
@@ -27,9 +32,6 @@ export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
 
 export EDITOR=nvim
 
-ZSH_THEME="agnoster"
-
-#plugins=(git npm django)
 
 # source $ZSH/oh-my-zsh.sh
 

@@ -8,5 +8,6 @@ do
   ln -f $f ../.$f
 done
 
-ln -f init.vim ../.config/nvim/$f
+mkdir -p ../.config/nvim
+ln -f init.vim ../.config/nvim/init.vim
 echo "init.vim $f"
