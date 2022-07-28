@@ -9,7 +9,7 @@ fi
 
 export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
 ZSH_THEME="agnoster"
-plugins=(git npm django)
+plugins=(git npm)
 source $ZSH/oh-my-zsh.sh
 
 
@@ -18,9 +18,10 @@ source $ZSH/oh-my-zsh.sh
 # antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 
 source $(brew --prefix nvm)/nvm.sh
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-nvm use stable
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+nvm use 16
 
 # Path to your oh-my-zsh installation.
 
@@ -59,8 +60,8 @@ fi
 export PATH="/Users/$DEFAULT_USER/Library/Python/3.7/bin:$PATH"
 export PATH="/Users/$DEFAULT_USER/bin:$PATH"
 export PATH=$PATH:/usr/local/mysql/bin
-
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH" 
+export PATH="/Users/$DEFAULT_USER/dotfiles/bin:$PATH" 
 
 source ~/dotfiles/aliases/.alias_oneome
 source ~/dotfiles/aliases/alias_git

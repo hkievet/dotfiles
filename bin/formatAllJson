@@ -1,0 +1,9 @@
+#!/bin/bash
+for f in *.json 
+do
+  # if f exists
+  if [ -f "$f" ]
+  then
+    jq . $f | sponge $f
+  fi
+done
