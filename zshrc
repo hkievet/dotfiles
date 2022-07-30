@@ -72,3 +72,6 @@ echo "Though walls of granite intervine"
 
 alias ctags="`brew --prefix`/bin/ctags"
 
+# https://starship.rs/
+eval "$(starship init zsh)"
+
