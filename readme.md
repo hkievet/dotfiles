@@ -40,3 +40,6 @@ git push -u origin master
 # Other things to download
 
 [Warp Terminal](https://www.warp.dev/)
+
+
+# LSP
