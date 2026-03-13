@@ -1,10 +1,9 @@
-# echo "loading zshrc"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-if [ ! -f ~/Documents/2-coding/dotfiles/config/zshrc.conf ]; then
+if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
   echo "No configuration file setup for zshrc.  Please copy and edit ~/dotfiles/config/zshrc.example.conf"
   else
-  source ~/Documents/2-coding/dotfiles/config/zshrc.conf
+  source ~/dotfiles/config/zshrc.conf
 fi
 
 export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
@@ -64,9 +63,8 @@ export PATH=$PATH:/usr/local/mysql/bin
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH" 
 export PATH="/Users/$DEFAULT_USER/dotfiles/bin:$PATH" 
 
-source ~/Documents/2-coding/dotfiles/aliases/.alias_oneome
-source ~/Documents/2-coding/dotfiles/aliases/alias_git
-source ~/Documents/2-coding/dotfiles/aliases/alias_misc
+source ~/dotfiles/aliases/alias_git
+source ~/dotfiles/aliases/alias_misc
 
 alias ctags="`brew --prefix`/bin/ctags"
 
