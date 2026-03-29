@@ -1,10 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-if [ ! -f ~/dotfiles/config/zshrc.conf ]; then
-  echo "No configuration file setup for zshrc.  Please copy and edit ~/dotfiles/config/zshrc.example.conf"
-  else
-  source ~/dotfiles/config/zshrc.conf
-fi
+
+DEFAULT_USER=$(whoami)
 
 export ZSH=/Users/$DEFAULT_USER/.oh-my-zsh
 ZSH_THEME="agnoster"
@@ -21,7 +18,7 @@ source $(brew --prefix nvm)/nvm.sh
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-nvm use 22 
+nvm use 22
 
 # Path to your oh-my-zsh installation.
 
@@ -60,8 +57,8 @@ fi
 export PATH="/Users/$DEFAULT_USER/Library/Python/3.7/bin:$PATH"
 export PATH="/Users/$DEFAULT_USER/bin:$PATH"
 export PATH=$PATH:/usr/local/mysql/bin
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH" 
-export PATH="/Users/$DEFAULT_USER/dotfiles/bin:$PATH" 
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+export PATH="/Users/$DEFAULT_USER/dotfiles/bin:$PATH"
 
 source ~/dotfiles/aliases/alias_git
 source ~/dotfiles/aliases/alias_misc

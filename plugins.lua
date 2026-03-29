@@ -3,7 +3,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- this is essential.
     use 'sbdchd/neoformat'
-    use 'neovim/nvim-lspconfig'
 
 
     use 'hrsh7th/cmp-nvim-lsp'

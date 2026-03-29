@@ -1,45 +1,145 @@
-# Usage of this directory
+# dotfiles
 
-This is a list of common dotfiles that I have in my setup.  I share this directory between my home and work computer.  Run `./copy_files` to symlink the dotfiles to the `~` directory.  It will skip `*.md` files and move `init.vim` into a special directory.  The rest of this README is for my own notes of things that I learn and things I commonly forget how to do.
+Personal development environment config, shared across machines. Clone once, symlink, and go.
 
-# Vim Notes
+## Other quick links
 
-## Go Vim Tips:
-
-`Plug 'fatih/vim-go`
-`Plug 'zchee/deoplete-go'`
-
-## Common Vim Tasks:
-
-* use `:CheckHealth` to debug deoplete errors
-
-## NERDTree tips
-
-Use the bookmark capabilities on
-* common project directories.
-* dotfiles folder
-
-* use `Bookmark <name of bookmark to set>` to add a bookmark where the cursor is
-* use `OpenBookmark <name of bookmark>` to jump to that bookmark
+[RayCast](https://www.raycast.com/)
+[Obsidian](https://obsidian.md/)
 
 
-# Chrome Extensions
 
-* Use [Markdown Viewer](https://github.com/simov/markdown-viewer), and adjust the settings to allow local files to open files like this in the browser.
 
-# Setting up a github repo for local repo via cli
+## Quick Start
 
-```
-curl -u 'hkievet' https://api.github.com/user/repos -d '{"private": false, "name": "<<<NAME OF REPO>>>"}'
-git remote add origin https://github.com/hkievet/<<<NAME OF REPO>>>.git
-git push -u origin master
+```bash
+git clone https://github.com/hkievet/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+cp .env-template .env        # fill in GIT_NAME and GIT_EMAIL
+./install.sh
 ```
 
+`install.sh` runs `install_dependencies.sh`, `copy_files.sh`, and sets your global git identity from `.env`.
 
+## What's Included
 
-# Other things to download
+### Shell (Zsh)
+- **Oh My Zsh** with starship prompt
+- **fzf** fuzzy finder integration
+- **NVM** — Node Version Manager, defaults to Node 22
+- Python aliased to `python3` / `pip3`
+- `vim` aliased to `nvim`
 
-[Warp Terminal](https://www.warp.dev/)
+### Aliases
 
+| Alias | Command |
+|-------|---------|
+| `gs` | `git status` |
+| `gcam` | `git commit -a -m` |
+| `rzsh` | Reload `~/.zshrc` |
+| `mux` | `tmuxinator` |
+| `tmux` | `tmux -2` (256-color) |
+| `npminstall` | `npm install --legacy-peer-deps` |
+| `pytest` | `python -m pytest` |
 
-# LSP
+### Neovim
+- **LSP** for TypeScript (`ts_ls`) and Python (`pyright`) via `vim.lsp.config`
+- **nvim-cmp** autocomplete with snippet support (vsnip)
+- **Neoformat** — auto-formats JS/TS files on save via Prettier
+- Plugin manager: **Packer**
+
+Key LSP mappings:
+
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gi` | Go to implementation |
+| `K` | Hover docs |
+| `<space>rn` | Rename |
+| `<space>ca` | Code action |
+| `<space>f` | Format |
+| `[d` / `]d` | Prev/next diagnostic |
+
+### Tmux
+- 256-color support
+- Mouse enabled
+- Activity monitoring in background windows
+
+### Other
+- `bin/formatAllJson` — batch-format all JSON files in a directory with `jq`
+- `gitignore_global` — ignores `.DS_Store`, `.vscode`, Go build artifacts
+- `jshintrc` — minimal JSHint config
+
+## File Layout
+
+```
+dotfiles/
+├── copy_files.sh           # symlinks everything to ~
+├── install_dependencies.sh # installs Xcode CLI + Homebrew
+├── setup_nvim.sh           # installs pyright for Python LSP
+├── homebrewpackages.txt    # Homebrew packages to install
+├── zshrc                   # Zsh config
+├── bashrc                  # minimal Bash config
+├── bash_profile            # sources Cargo env
+├── vimrc                   # minimal Vim config (line numbers)
+├── init.lua                # Neovim main config (Lua)
+├── plugins.lua             # Neovim Packer plugins
+├── init.vim                # legacy Neovim config (vim-plug, unused)
+├── tmux.conf               # Tmux config
+├── gitignore_global        # global gitignore
+├── jshintrc                # JSHint config
+├── aliases/
+│   ├── alias_git           # git aliases
+│   └── alias_misc          # misc aliases
+└── bin/
+    └── formatAllJson       # batch JSON formatter
+```
+
+## Neovim Setup
+
+**1. Install Packer** (plugin manager):
+
+```bash
+git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
+
+**2. Install LSP servers** (requires Node):
+
+```bash
+npm install -g pyright                  # Python LSP
+npm install -g typescript-language-server typescript  # TypeScript LSP
+npm install -g prettier                 # formatting (used by Neoformat)
+```
+
+Or run the included script:
+
+```bash
+./setup_nvim.sh
+```
+
+**3. Install plugins** — open `nvim` and run:
+
+```
+:PackerSync
+```
+
+## Dependencies
+
+`install.sh` handles all of this automatically. Installed packages:
+
+| Tool | Source |
+|------|--------|
+| ffmpeg | Homebrew |
+| neovim | Homebrew |
+| vscodium | Homebrew |
+| yt-dlp | Homebrew |
+| fzf | Homebrew |
+| starship | Homebrew |
+| tmuxinator | RubyGems |
+
+Also required (installed separately):
+- [Homebrew](https://brew.sh)
+- [Oh My Zsh](https://ohmyz.sh)
+- [NVM](https://github.com/nvm-sh/nvm)
