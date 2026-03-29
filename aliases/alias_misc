@@ -1,3 +1,6 @@
 alias rzsh="source ~/.zshrc"
 alias cdeh="cd ~/heezy_www/eighthourdreams"
 alias cdss="cd /Users/achieve/dev/wordpress/wordpress/wp-content/themes/spera"
+
+ytdlp-wav() { yt-dlp -x --audio-format wav -o "~/Downloads/%(title)s.%(ext)s" "$1" }
+ytdlp-mp4() { yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" -o "~/Downloads/%(title)s.%(ext)s" "$1" }
