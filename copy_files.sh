@@ -12,3 +12,8 @@ done
 mkdir -p ~/.config/nvim/lua
 ln -sf "$DOTFILES_DIR/init.lua" ~/.config/nvim/init.lua
 ln -sf "$DOTFILES_DIR/plugins.lua" ~/.config/nvim/lua/plugins.lua
+
+# Claude Code config
+mkdir -p ~/.claude
+ln -sf "$DOTFILES_DIR/claude/settings.json" ~/.claude/settings.json
+ln -sf "$DOTFILES_DIR/claude/CLAUDE.md" ~/.claude/CLAUDE.md
