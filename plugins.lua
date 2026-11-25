@@ -1,13 +1,15 @@
-vim.cmd [[packadd packer.nvim]]
+return {
+  { 'sbdchd/neoformat' },
+  { 'neovim/nvim-lspconfig' },
 
-return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim' -- this is essential.
-    use 'sbdchd/neoformat'
+  -- Completion core
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'hrsh7th/cmp-cmdline' },
 
-
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-end)
+  -- Optional snippet engine
+  { 'hrsh7th/vim-vsnip' },
+  { 'hrsh7th/cmp-vsnip' },
+}

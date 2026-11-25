@@ -1,7 +1,21 @@
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- require'lspconfig'.pyright.setup{}
 -- require'lspconfig'.pyright.setup{}
 -- require'lspconfig'.tsserver.setup{}
-require("plugins")
+
+-- Looks for ./plugins.lua
+-- require("plugins")
+require("lazy").setup(require("plugins"))
 
 
 -- require'lspconfig'.pyright.setup{}
@@ -37,7 +51,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format({ async = true }) end, bufopts)
 end
 
 
