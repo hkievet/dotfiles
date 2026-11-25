@@ -67,3 +67,6 @@ alias ctags="`brew --prefix`/bin/ctags"
 # https://starship.rs/
 eval "$(starship init zsh)"
 
+
+# Added by Windsurf (only on machines that have it)
+[ -d "$HOME/.codeium/windsurf/bin" ] && export PATH="$HOME/.codeium/windsurf/bin:$PATH"
